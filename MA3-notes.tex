@@ -74,9 +74,11 @@ F  :&  \mathbb{R} \mapsto [0;1] \label{defver:2}
 
 $F$ bildet also die Wahrscheinlichkeit für alle Werte der Zufallsvariablen $X$ für $X \leq x$ ab \eqref{defver:1}. Dabei wird für jedes $x$ eine Wahrscheinlichkeit abgebildet.
 
+\section{Diskrete Verteilungen}
+
 \subsection{Binomialverteilung}
 
-\subsection{Stetige Verteilungen}
+\section{Stetige Verteilungen}
 
 Die Dichtefunktion\footnote{Die Dichtefunktion ist das \textit{stetige} Gegenstück zur \textit{diskreten} Verteilungsfunktion}
 einer stetigen Verteilung zeichnet sich, wie der Name impliziert durch das Vorhandensein eines Wert an allen Stellen aus
@@ -159,6 +161,36 @@ F(x) = \begin{cases}
 \end{equation}
 
 \subsection{Normalverteilung}
+
+Die Normalverteilung folgt der grundlegenden Form $f(t) = e^{- t^2}$. Überprüfen wir zunächst
+die Eigenschaften \eqref{dichteeig:1}\footnote{trivial, $e^0 = 1$} und \eqref{dichteeig:2}.
+
+\begin{marginfigure}
+	\includegraphics{normalverteilung}
+	\caption{Beispiel einer Normalverteilung}
+\end{marginfigure}
+
+Zu \eqref{dichteeig:2}:
+
+\begin{gather*}
+	\int_{-\infty}^\infty e^{\frac{- t^2}{2}} dt = \sqrt{2 \Pi}
+\end{gather*}
+
+Da $\sqrt{2\Pi} > 1$, ist Bedingung \eqref{dichteeig:2} nicht erfüllt. Wir definieren daher die \textit{Standard-Normalverteilung} $\phi$ wie folgt
+\footnote{Wir normieren die Funktion auf das berechnete Integral, damit $\int_{-\infty}^\infty = 1$}:
+
+\begin{equation}
+\phi(t) = \frac{e^{\frac{-t^2}{2}}}{\sqrt{2 \Pi}}
+\end{equation}
+
+Zusätzlich definieren wir die \textit{allgemeine Normalverteilung}
+\footnote{
+$\mu$: Verschiebung entlang der x-Achse \\
+$\sigma$: Stauchung/Streckung}:
+
+\begin{equation}
+\phi(t) = \frac{1}{\sqrt{2 \Pi} \sigma} \cdot e^{- \frac{1}{2} (\frac{x - \mu}{\sigma})^2}
+\end{equation}
 
 \subsection{Unabhängigkeit zweier Zufallsvariablen}
 
