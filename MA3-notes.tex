@@ -76,7 +76,30 @@ $F$ bildet also die Wahrscheinlichkeit für alle Werte der Zufallsvariablen $X$ 
 
 \section{Diskrete Verteilungen}
 
+\subsection{Bernoulliverteilung}
+
+Die Bernoulli-Verteilung ist eine \textit{diskrete} Verteilung, deren Zufallsvariable $X$ nur zwei Werte annimmt: Erfolg ($X=1$) und Misserfolg ($X=0$).
+
+Für die Wahrscheinlichkeitsverteilung gilt:
+
+\begin{equation}
+	P(X=x) = p^x (1-p)^{1-x}
+\end{equation}
+
 \subsection{Binomialverteilung}
+
+Die Varianz der Binomialverteilung berechnet sich wie folgt:
+
+\begin{equation}
+	\sigma^2 = Var(X) = n \cdot p \cdot (1-p).
+\end{equation}
+
+Eine Binomialverteilung mit den Parametern $n$ und $p$ lässt sich durch eine Normalverteilung annähern,
+falls gilt: 
+
+\begin{equation}
+\sqrt{n \cdot p \cdot (1-p)} > 3.
+\end{equation}
 
 \section{Stetige Verteilungen}
 
@@ -189,8 +212,17 @@ $\mu$: Verschiebung entlang der x-Achse \\
 $\sigma$: Stauchung/Streckung}:
 
 \begin{equation}
-\phi(t) = \frac{1}{\sqrt{2 \Pi} \sigma} \cdot e^{- \frac{1}{2} (\frac{x - \mu}{\sigma})^2}
+\phi(x) = \frac{1}{\sqrt{2 \Pi} \sigma} \cdot e^{- \frac{1}{2} (\frac{x - \mu}{\sigma})^2}
 \end{equation}
+
+Die Wahrscheinlichkeitsverteilung berechnet sich durch\footnote{Die Wahrscheinlichkeitsverteilung zu einer Dichtefunktion ist einfach das Integral}:
+
+\begin{equation}
+\Phi(x) = \frac{1}{\sqrt{2 \Pi} \sigma} \int_{-\infty}^x e^{- \frac{1}{2} (\frac{t - \mu}{\sigma})^2} dt
+\end{equation}
+
+Hierbei wird ein uneigentliches Integral\footnote{Integral mit $\infty$ als Grenze, Wert nicht einfach berechenbar} verwendet, dessen Berechnung nur über Näherungsverfahren möglich ist. 
+Hierfür gibt es Tabellen, die in der Klausur gestellt werden.
 
 \subsection{Unabhängigkeit zweier Zufallsvariablen}
 
