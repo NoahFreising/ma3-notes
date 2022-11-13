@@ -42,7 +42,7 @@
     {}% Indent amount
     {\textbf}% Theorem head font
     {:}% Punctuation after theorem head
-    {\newline}% Space after theorem head
+    {.5em}% Space after theorem head
     {}% Theorem head spec
 
 \theoremstyle{own}
@@ -83,10 +83,30 @@ Die Bernoulli-Verteilung ist eine \textit{diskrete} Verteilung, deren Zufallsvar
 Für die Wahrscheinlichkeitsverteilung gilt:
 
 \begin{equation}
-	P(X=x) = p^x (1-p)^{1-x}
+	P(X=x) = p^x (1-p)^{1-x}.
 \end{equation}
 
+\begin{example}
+	Ein Münzwurf, bei dem Kopf z.B. 1 und Zahl 0 zugeordnet wird, ist
+	ein Beispiel für ein Bernoulli-Experiment. Bei einer fairen Münze ist 
+	$p= \frac{1}{2}$.
+\end{example}
+
 \subsection{Binomialverteilung}
+
+\newthought{Eine Folge von Bernoulli-Versuchen} mit der Länge $n$ und der Trefferwahrscheinlichkeit
+$p$ nennen wir \textit{Bernoulli-Kette}. Diese ist binomialverteilt mit der 
+Washrscheinlichkeit:
+
+\begin{equation}
+	B(n,p,k) = \binom{n}{k} \cdot p^k \cdot (1-p)^{n-k}.
+\end{equation}
+
+Der Erwartungswert der Binomialverteilung berechnet sich durch:
+
+\begin{equation}
+	\lambda = n \cdot p
+\end{equation}
 
 Die Varianz der Binomialverteilung berechnet sich wie folgt:
 
@@ -95,10 +115,28 @@ Die Varianz der Binomialverteilung berechnet sich wie folgt:
 \end{equation}
 
 Eine Binomialverteilung mit den Parametern $n$ und $p$ lässt sich durch eine Normalverteilung annähern,
-falls gilt: 
+falls gilt (\textit{Laplace-Bedingung}): 
 
 \begin{equation}
 \sqrt{n \cdot p \cdot (1-p)} > 3.
+\end{equation}
+
+Bei einer Bernoulli-Kette ist es oftmals spannend zu wissen, wie hoch die
+Wahrscheinlichkeit ist, dass der erste Treffer nach $k$ Versuchen auftritt.
+Die Verteilungsfunktion hierzu bezeichnen wir als \textit{geometrische Verteilung}:
+
+\begin{equation}
+	P(k) = (1 - p)^{k-1} p
+\end{equation}
+
+Wenn die Wahrscheinlichkeit $P$ eines Treffers bei wachsemden $n$ gegen 0
+geht\footnote{$\text{lim}_{n \rightarrow \infty} n = 0$.} und gleichzeitig
+$\text{lim}_{n \rightarrow \infty} = n \cdot p = \lambda > 0$ gilt, lassen
+sich die binomialverteilten Wahrscheinlichkeiten bei wachsemden $n$ mit der
+\textit{Poisson-Verteilung} approximieren:
+
+\begin{equation}
+	P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} \hspace{1em} k = 0,1,.. \hspace{1em} \lambda > 0
 \end{equation}
 
 \section{Stetige Verteilungen}
@@ -234,13 +272,17 @@ $X$ und $Y$ heißen \textit{unabhängig}, wenn $\forall x \in W(X), y \in W(Y)$:
 \end{equation}
 
 gilt. Bei gemeinsamen Verteilungen sprechen wir von \textit{diskreten} Zufallsvariablen.
+Die Unabhängigkeit lässt sich zeigen durch eine Vierfeldertafel, bei der alle
+Werte durch Multiplikation berechnet werden und eine Addition der Einzelwahrscheinlichkeiten
+1 ergibt (siehe Beispiel \ref{bsp:unabhängig}). Die Abhängigkeit lässt sich 
+durch ein Gegenbeispiel beweisen.
 
 \begin{marginfigure}
   \includegraphics{zweizufallsvariablen}
   \caption{Mögliche Kombinationen zweier Zufallsvariablen in $\Omega$.}
 \end{marginfigure}
 
-\begin{example}
+\begin{example}\label{bsp:unabhängig}
 Beispiel einer unabhängigen, gemeinsamen Verteilung.
 Hier sehen wir das
 an der Vierfeldertafel\footnote{Siehe Beispielsweise: $P(X=0,Y=0) = P(X) \cdot P(Y) = \frac{1}{4} \cdot \frac{1}{4} = \frac{1}{16}$}:
@@ -303,6 +345,8 @@ E(X) = \int_{-\infty}^{\infty} y \cdot f(y) dy
 \begin{example}\label{bsp:erwartungswertstetig}
 Erwartungswert einer stetigen Verteilung\footnote{gerne in Klausuren gefragt}
 
+Gegeben eine Dichtefunktion $f$:
+
 \begin{equation*}
 	f(x) = \begin{cases} 
 	ax^2, 0 \leq x \leq 5 \\
@@ -310,13 +354,16 @@ Erwartungswert einer stetigen Verteilung\footnote{gerne in Klausuren gefragt}
 	\end{cases}
 \end{equation*}
 
+Wir berechnen zuerst $a$, sodass die Bedingungen \eqref{dichteeig:1} und
+\eqref{dichteeig:2} erfüllt sind:
+
 \begin{gather*}
 \int_{-\infty}^{\infty} f(x)dx = \int_0^5 ax^2 dx = 1 \\
 [\frac{a x^3}{3}]_0^5 = \frac{125a}{3} - \frac{0a}{3} =  \frac{125a}{3} = 1 \\
 a = \frac{3}{125}
 \end{gather*}
 
-Der Erwartungswert ist dann:
+Der Erwartungswert berechnet sich nun wie folgt:
 
 \begin{gather*}
 E(X) = \int_0^5 x \frac{3}{125} x^2 dx \\
@@ -337,7 +384,8 @@ E( a \cdot X + b \cdot Y) = a \cdot E(X) + b \cdot E(Y)  \\
 
 \section{Varianz}
 
-Der mittlere Abstand der Werte vom Erwartungswert. Die quadratische Funktion ist besser als der Betrag analytisch.
+Der mittlere Abstand der Werte vom Erwartungswert. Die quadratische Funktion
+ist besser als der Betrag analytisch, weshalb wir diese verwenden.
 
 Die Varianz zum Beispiel \autoref{bsp:erwartungswertdiskret}:
 
@@ -373,9 +421,6 @@ Var(X) :&= E((X - E(X))^2) \\
 &= E(X^2) - (E(X))^2
 \end{align*}
 \end{proof}
-
-
-
 
 \marginnote{
 \begin{tabular}{l|llllll}
