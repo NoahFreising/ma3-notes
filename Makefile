@@ -6,3 +6,5 @@ NOTES=MA3-notes.tex
 all: $(NOTES)
 	$(LATEX) $(NOTES)
 
+watch:
+	latexmk -pdf -pvc $(NOTES)

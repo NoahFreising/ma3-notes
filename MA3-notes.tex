@@ -450,6 +450,197 @@ E(X^2) = \int_{-\infty}^\infty x^2 f(x) dx = \frac{3}{125} \int_0^5 x^2 x^2 dx \
 Var(X) = 15 - (\frac{15}{4})^2 = \frac{15 \cdot 16 - 15^2}{16} = \frac{15}{16}.
 \end{gather*}
 
+\subsection{Die Ungleichung von Tschebyscheff}
+
+$M = W(A) \cap (]-\infty; E(A) - a) \cup (E(A)+a; +\infty [)$
+
+$Var(A) := \sum_{i=1}^k (x_i - E(A))^2 \cdot P(A = x_i) \ge \sum_{x_i \in M}
+(x_i - E(A))^2 P(A=x_i) \ge \sum_{x_i \in M} a^2 P(A=x_i) = a^2 \sum_{x_i \in M}
+P(A = x_i) = P(|A - E(A)| \ge a)$
+
+Anwenden bei: symmetrischem Intervall um Erwartungswert herum, Erwartungswert
+und Varianz müssen vorhanden sein. Frage: im symmetrischen Intervall oder
+außerhalb des symmetrischen Intervalls.
+
+\begin{example}
+	Obsthändler, Binomialverteilung, $n=240$, $p=\frac{1}{20}$.
+	Gesucht $P(6 \le X \le 18)$?
+	$E(X) = np = 240 \cdot \frac{1}{20} = 12$
+	$Var(X) = 12 \cdot {19}{20} = \frac{57}{5} \approx 11.4$
+	Das Intervall ist geeignet für Tschebyscheff, weil $E(X)$ genau in der Mitte
+	des Intervalls liegt.
+	$P(6 \le X \le 18) = 1 - P(|X - 12| \ge 7)$
+	$\ge 1 - \frac{11.4}{7^2} \approx 1 - 0.2326 = 0.7673$.
+	Es liegen \emph{mindestens} $76\%$ im Intervall.
+\end{example}
+
+\subsection{Satz}
+
+Sei $X_1,...,X_n$ eine Folge identisch verteilter unabhäniger Zufallsgrößen
+mit $E(X_i) = \mu$ und $Var(X_i) = \sigma^2 \forall i \in \mathbb{N}$,
+
+\begin{equation}
+	U_n = \frac{(X_1 + ... + X_n) - n\mu}{\sqrt{n} \cdot \sigma}.
+\end{equation}
+
+Dann konvergieren die Verteilungsfunktionen $F_n$ der Zufallsgrößen $U_n$ gegen
+die Standardnormalverteilung.
+
+\begin{example}
+	\begin{gather*}
+		P(6 \le X \le 18) = P(\frac{6-12}{\sqrt{11.4}} \le \frac{X-12}{\sqrt{11.4}} 
+		\le \frac{18-12}{\sqrt{11.4}}\\
+		= \Phi (\frac{6}{\sqrt{11.4}}) - \Phi (\frac{-6}{\sqrt{11.4}}) \\
+		= 2 \Phi (\frac{6}{\sqrt{11.4}}) - 1 \approx 0.9232
+	\end{gather*}
+	Hinweis: $P(6 \le X \le 18) = P(5 < X <19)$.
+\end{example}
+
+Wenn die Varianz nicht zu groß ist, kann ein Korrekturfaktor ($0.5$) bei der
+Berechnung der Approximation durch die Standardnormalverteilung aufaddiert
+werden (Siehe Folie 94).
+
+\subsection{Bernoullisches Gesetz der großen Zahlen}
+
+Satz: Sei $n \in \mathbb{N}, 0 < p < 1, v_n = \frac{A}{n}$ die relative 
+Häufigkeit eines Ereignisses $A$ in einer Bernoullikette der Länge $n$. Es 
+gelte außerdem $P(A) = p$. Dann gilt für jedes $\epsilon > 0$
+
+\begin{equation}
+	\lim_{n \rightarrow +\infty} P(|v_n - p| > \epsilon) = 0.
+\end{equation}
+
+$\epsilon$ ist die Ungenauigkeit.
+
+\begin{example}
+Bernoullikette der Länge $n$ mit der Trefferwahrscheinlichkeit $p$, $A$
+binomialverteilt, neue Zufallsgröße: $\frac{A}{n}$
+
+$E(\frac{A}{n}) = \frac{1}{n} E(A) = \frac{1}{n} \cdot n \cdot p = p$
+$Var(\frac{A}{n}) = \frac{1}{n^2}$i
+
+$P(|\frac{A}{n} - p| > \epsilon) \le \frac{p \cdot (1 - p)}{n \cdot \epsilon^2}$
+Geht für $n$ gegen $\infty$ gegen 0.
+\end{example}
+
+\begin{example}
+	Eine Münze wird 10000 mal geworfen, Wahrscheinlichkeit für 4990 bis 5010 mal
+	Kopf.$n=10000, p=\frac{1}{2}, E(X) = 5000, Var(X) = 2500$
+	
+	\begin{gather}
+		P(4990 \le X \le 5010) = 1 - P(|X - 5000| \ge 11)\\
+		= 1 - \frac{2500}{11^2} = 1 - \frac{2500}{121} \approx -19.6
+	\end{gather}
+	
+	Nach der Ungleichung von Tschebyscheff wissen wir, dass die Wahrscheinlichkeit
+	größer als $-19.6$ ist, korrekt aber naja.
+	
+	Mit der Standardnormalverteilung:
+	
+	\begin{gather*}
+	P(\frac{4990 - 5000}{50} \le \frac{X - 5000}{50} \le \frac{5010}{50})\\
+	= P(- \frac{1}{5} \le T \le \frac{1}{5}) \\
+	\approx \Phi(\frac{1}{5}) - \Phi(-\frac{1}{5}) \\
+	=2 \Phi(\frac{1}{5}) - 5 \approx 0.1586
+	\end{gather*}
+\end{example}
+
+\subsection{Die Kovarianz von zwei Zufallsgrößen}
+
+Die \emph{Kovarianz} von zwei Zufallsgrößen $X$ und $Y$ wird durch
+
+\begin{equation}
+	cov(X,Y) = E((X - E(X)))(Y - E(Y))
+\end{equation}
+
+Wenn die Kovarianz nicht 0 ist, sind die Variablen \emph{immer} abhängig.
+
+%=============================================================================
+
+\section{Statistik}
+
+Methodensammlung zum Umgang mit Wahrscheinlichkeiten/Zahlen in der realen Welt.
+
+\emph{Grundgesamtheit}: Gesamtheit gleichartiger Objekte, die hinsichtlich eines
+bestimmten Merkmals untersucht werden sollen.
+
+Eine \emph{Stichprobe} vom Umfang $n \in \mathbb{N}$ ist eine Folge $X_1,...,X_n$ von
+unabhängigen identisch verteilten Zufallsgrößen. Eine \emph{Statistik} ist eine
+Zufallsgröße
+
+\begin{equation}
+	g(X_1,...,X_n) \text{ mit } g: \mathbb{R}^n \mapsto \mathbb{R}.
+\end{equation}
+
+Der \emph{Modus} ist der häufigste Wert, der in der Stichprobe vorkommt.
+
+Der \emph{Median} ist der Wert, der genau in der Mitte der Datenverteilung liegt.
+Bei einer geraden Anzahl von Individualdaten ist die Hälfte der Summe der beiden
+in der Mitte liegenden Werte.
+
+\begin{example} Altersverteilung Studierende
+
+Stichprobe: 23, 25, 22, 23, 36, 23, 20, 18, 19, 20, 24
+
+Modus: 23, da der Wert dreimal vorkommt.
+
+Geordnet (hervorg: Median): 18, 19, 20, 20, 22, \emph{23}, 23, 23, 24, 25, 26
+
+Mittelwert: 23
+
+\end{example}
+
+\subsection{Erwartungstreuer Schätzer für den Erwartungswert}
+
+Sei $(X_1,...,X_n)$ eine Stichprobe vom Umfang $n$ mit $E(X_i) = \mu \in \mathbb{R}$
+und $Var(X_i) = \sigma^2$ für alle $i \in \{1,...,n\}$ und
+
+\begin{equation*}
+	\Bar{X} = \frac{1}{n} \sum_{i=1}^n X_i
+\end{equation*}
+
+Es gilt:
+
+\begin{align}
+&E(\Bar{X}) = \mu \\
+&Var(\Bar{X}) = \frac{\sigma^2}{n} \label{eq:varianz}
+\end{align}
+
+Man sagt, $\Bar{X}$ ist ein erwartungstreuer Schätzer für $\mu$.
+
+Herleitung für \eqref{eq:varianz}: $Var(\Bar{X}) = (\frac{1}{n})^2 \sum_{i=1}^n Var(X_i)
+ = \frac{1}{n^2} \cdot n \cdot \sigma^2 = \frac{\sigma^2}{n}$.
+
+\subsection{Varianz einer Stichprobe}
+
+Sei $(X_1,..X_n)$ eine Stichprobe vom Umfang $n$ mit $E(X_i) = \mu \in \mathbb{R}$
+und $Var(X_i) = \sigma^2 in \mathbb{R}^{+}$ für alle $i \in 1,...,n$ und
+
+\begin{equation}
+	S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \Bar{X})^2
+\end{equation}
+
+mit $\Bar{X} = $
+
+
+Herteilung einer alternativen Formel für die Varianz
+\begin{gather}
+S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \Bar{X})^2
+= \frac{1}{n-1} \sum_{i=1}^n (X_i^2 - 2\Bar{X}X_i + (\Bar{X})^2 ) \\
+= \frac{1}{n-1} \sum_{i=1}^n X_i^2 - 2\Bar{X} \sum_{i=1}^n X_i + n (\Bar{X})^2 \\
+= \frac{1}{n-1} \sum_{i=1}^n X_i^2 - 2 (\Bar{X})^2 \cdot n + n (\Bar{X})^2 \\
+= \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \cdot (\Bar{X})^2 )
+\end{gather}
+
+\begin{example} Kennzahlen für Lineare Regression berechnen
+
+1) $\Bar{X}, \Bar{Y}$
+
+2)
+
+3)
+
+\end{example}
 
 \bibliography{sample-handout}
 \bibliographystyle{plainnat}
