@@ -78,7 +78,7 @@ $F$ bildet also die Wahrscheinlichkeit für alle Werte der Zufallsvariablen $X$ 
 
 \subsection{Bernoulliverteilung}
 
-Die Bernoulli-Verteilung ist eine \textit{diskrete} Verteilung, deren Zufallsvariable $X$ nur zwei Werte annimmt: Erfolg ($X=1$) und Misserfolg ($X=0$).
+Die Bernoulli-Verteilung ist eine \emph{diskrete} Verteilung, deren Zufallsvariable $X$ nur zwei Werte annimmt: Erfolg ($X=1$) und Misserfolg ($X=0$).
 
 Für die Wahrscheinlichkeitsverteilung gilt:
 
@@ -95,7 +95,7 @@ Für die Wahrscheinlichkeitsverteilung gilt:
 \subsection{Binomialverteilung}
 
 \newthought{Eine Folge von Bernoulli-Versuchen} mit der Länge $n$ und der Trefferwahrscheinlichkeit
-$p$ nennen wir \textit{Bernoulli-Kette}. Diese ist binomialverteilt mit der 
+$p$ nennen wir \emph{Bernoulli-Kette}. Diese ist binomialverteilt mit der 
 Washrscheinlichkeit:
 
 \begin{equation}
@@ -115,7 +115,7 @@ Die Varianz der Binomialverteilung berechnet sich wie folgt:
 \end{equation}
 
 Eine Binomialverteilung mit den Parametern $n$ und $p$ lässt sich durch eine Normalverteilung annähern,
-falls gilt (\textit{Laplace-Bedingung}): 
+falls gilt (\emph{Laplace-Bedingung}): 
 
 \begin{equation}
 \sqrt{n \cdot p \cdot (1-p)} > 3.
@@ -123,7 +123,7 @@ falls gilt (\textit{Laplace-Bedingung}):
 
 Bei einer Bernoulli-Kette ist es oftmals spannend zu wissen, wie hoch die
 Wahrscheinlichkeit ist, dass der erste Treffer nach $k$ Versuchen auftritt.
-Die Verteilungsfunktion hierzu bezeichnen wir als \textit{geometrische Verteilung}:
+Die Verteilungsfunktion hierzu bezeichnen wir als \emph{geometrische Verteilung}:
 
 \begin{equation}
 	P(k) = (1 - p)^{k-1} p
@@ -133,7 +133,7 @@ Wenn die Wahrscheinlichkeit $P$ eines Treffers bei wachsendem $n$ gegen 0
 geht\footnote{$\text{lim}_{n \rightarrow \infty} n = 0$.} und gleichzeitig
 $\text{lim}_{n \rightarrow \infty} = n \cdot p = \lambda > 0$ gilt, lassen
 sich die binomialverteilten Wahrscheinlichkeiten bei wachsemden $n$ mit der
-\textit{Poisson-Verteilung} approximieren:
+\emph{Poisson-Verteilung} approximieren:
 
 \begin{equation}
 	P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} \hspace{1em} k = 0,1,.. \hspace{1em} \lambda > 0
@@ -141,7 +141,7 @@ sich die binomialverteilten Wahrscheinlichkeiten bei wachsemden $n$ mit der
 
 \section{Stetige Verteilungen}
 
-Die Dichtefunktion\footnote{Die Dichtefunktion ist das \textit{stetige} Gegenstück zur \textit{diskreten} Verteilungsfunktion}
+Die Dichtefunktion\footnote{Die Dichtefunktion ist das \emph{stetige} Gegenstück zur \emph{diskreten} Verteilungsfunktion}
 einer stetigen Verteilung zeichnet sich, wie der Name impliziert durch das Vorhandensein eines Wert an allen Stellen aus
 \footnote{Der Definitionsbereich ist $\mathbb{R}$.}. 
 Wir nutzen hier anstelle einer Verteilungsfunktion eine Dichtefunktion
@@ -237,14 +237,14 @@ Zu \eqref{dichteeig:2}:
 	\int_{-\infty}^\infty e^{\frac{- t^2}{2}} dt = \sqrt{2 \Pi}
 \end{gather*}
 
-Da $\sqrt{2\Pi} > 1$, ist Bedingung \eqref{dichteeig:2} nicht erfüllt. Wir definieren daher die \textit{Standard-Normalverteilung} $\phi$ wie folgt
+Da $\sqrt{2\Pi} > 1$, ist Bedingung \eqref{dichteeig:2} nicht erfüllt. Wir definieren daher die \emph{Standard-Normalverteilung} $\phi$ wie folgt
 \footnote{Wir normieren die Funktion auf das berechnete Integral, damit $\int_{-\infty}^\infty = 1$}:
 
 \begin{equation}
 \phi(t) = \frac{e^{\frac{-t^2}{2}}}{\sqrt{2 \Pi}}
 \end{equation}
 
-Zusätzlich definieren wir die \textit{allgemeine Normalverteilung}
+Zusätzlich definieren wir die \emph{allgemeine Normalverteilung}
 \footnote{
 $\mu$: Verschiebung entlang der x-Achse \\
 $\sigma$: Stauchung/Streckung}:
@@ -265,13 +265,13 @@ Hierfür gibt es Tabellen, die in der Klausur gestellt werden.
 \subsection{Unabhängigkeit zweier Zufallsvariablen}
 
 Sei $(\Omega, P)$ ein Wahrscheinlichkeitsraum und $X,Y : \Omega \mapsto \mathbb{R}$ zwei Zufallsgrößen.
-$X$ und $Y$ heißen \textit{unabhängig}, wenn $\forall x \in W(X), y \in W(Y)$:
+$X$ und $Y$ heißen \emph{unabhängig}, wenn $\forall x \in W(X), y \in W(Y)$:
 
 \begin{equation}
 	P(X=x, Y=y) = P(X=x) \cdot P(Y=y)
 \end{equation}
 
-gilt. Bei gemeinsamen Verteilungen sprechen wir von \textit{diskreten} Zufallsvariablen.
+gilt. Bei gemeinsamen Verteilungen sprechen wir von \emph{diskreten} Zufallsvariablen.
 Die Unabhängigkeit lässt sich zeigen durch eine Vierfeldertafel, bei der alle
 Werte durch Multiplikation berechnet werden und eine Addition der Einzelwahrscheinlichkeiten
 1 ergibt (siehe Beispiel \ref{bsp:unabhängig}). Die Abhängigkeit lässt sich 
@@ -312,7 +312,7 @@ darstellen.
 
 \section{Erwartungswert}
 
-Für eine \textit{diskrete} Zufallsgröße ist der Erwartungswert
+Für eine \emph{diskrete} Zufallsgröße ist der Erwartungswert
 
 \begin{equation}
 E(X) = \sum_i x_i P(X=x_i).
@@ -335,8 +335,8 @@ E(X) = 0 \cdot \frac{3}{8} + 2 \cdot \frac{1}{8} + 3 \cdot \frac{1}{8} + 4 \cdot
 
 \end{example}
 
-Für eine \textit{stetige} Zufallsgröße ist der Erwartungswert
-\footnote{Funktioniert prinzipiell genau wie im \textit{diskreten}, aber mit Integral statt Summe}:
+Für eine \emph{stetige} Zufallsgröße ist der Erwartungswert
+\footnote{Funktioniert prinzipiell genau wie im \emph{diskreten}, aber mit Integral statt Summe}:
 
 \begin{equation}
 E(X) = \int_{-\infty}^{\infty} y \cdot f(y) dy
@@ -463,15 +463,17 @@ und Varianz müssen vorhanden sein. Frage: im symmetrischen Intervall oder
 außerhalb des symmetrischen Intervalls.
 
 \begin{example}
-	Obsthändler, Binomialverteilung, $n=240$, $p=\frac{1}{20}$.
-	Gesucht $P(6 \le X \le 18)$?
-	$E(X) = np = 240 \cdot \frac{1}{20} = 12$
-	$Var(X) = 12 \cdot {19}{20} = \frac{57}{5} \approx 11.4$
-	Das Intervall ist geeignet für Tschebyscheff, weil $E(X)$ genau in der Mitte
-	des Intervalls liegt.
-	$P(6 \le X \le 18) = 1 - P(|X - 12| \ge 7)$
-	$\ge 1 - \frac{11.4}{7^2} \approx 1 - 0.2326 = 0.7673$.
-	Es liegen \emph{mindestens} $76\%$ im Intervall.
+	\begin{itemize}
+		\item Obsthändler, Binomialverteilung, $n=240$, $p=\frac{1}{20}$.
+		\item Gesucht $P(6 \le X \le 18)$?
+		\item $E(X) = np = 240 \cdot \frac{1}{20} = 12$
+		\item $Var(X) = 12 \cdot {19}{20} = \frac{57}{5} \approx 11.4$
+		\item Das Intervall ist geeignet für Tschebyscheff, weil $E(X)$ genau in der Mitte
+		des Intervalls liegt.
+		\item $P(6 \le X \le 18) = 1 - P(|X - 12| \ge 7)$
+		$\ge 1 - \frac{11.4}{7^2} \approx 1 - 0.2326 = 0.7673$.
+		\item Es liegen \emph{mindestens} $76\%$ im Intervall.
+	\end{itemize}
 \end{example}
 
 \subsection{Satz}
@@ -553,8 +555,31 @@ Die \emph{Kovarianz} von zwei Zufallsgrößen $X$ und $Y$ wird durch
 	cov(X,Y) = E((X - E(X)))(Y - E(Y))
 \end{equation}
 
-Wenn die Kovarianz nicht 0 ist, sind die Variablen \emph{immer} abhängig.
+es gilt
 
+\begin{equation}
+	cov(X,Y) = E(XY) - E(X) \cdot E(Y)
+\end{equation}
+
+Wenn die Kovarianz nicht 0 ist, sind die Variablen \emph{immer} abhängig.\footnote{
+Wenn zwei Variablen unabhängig sind, ist die Kovarianz 0. Wenn die Kovarianz
+0 ist, müssen die Variablen aber nicht unabhängig sein.}
+
+\subsection{Der Korrelationseffizient}
+
+\newthought{Der Korrelationseffizient} von zwei Zufallsgrößen $X$ und $Y$ wird
+durch
+
+\begin{equation}
+	\rho_{XY} = \frac{cov(X,Y)}{\sqrt{Var(X)}\sqrt{Var(Y)}}
+\end{equation}
+
+definiert.
+
+\begin{itemize}
+\item $ -1 \leq \rho_{XY} \leq 1 $
+\item Falls $\rho_{XY} = \pm 1$ gilt, dann gilt $P(Y = aX + b) = 1$ für $a,b \in \mathbb{R}$
+\end{itemize}
 %=============================================================================
 
 \section{Statistik}
@@ -620,8 +645,32 @@ und $Var(X_i) = \sigma^2 in \mathbb{R}^{+}$ für alle $i \in 1,...,n$ und
 	S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \Bar{X})^2
 \end{equation}
 
-mit $\Bar{X} = $
+mit $\Bar{X} = \frac{1}{n} \sum_{i=1}^n X_i$. Es gilt
 
+\begin{equation}
+	E(S^2) = \sigma^2.
+\end{equation}
+
+Die Zufallsgröße $S^2$ heißt \emph{Varianz} und $\sqrt{S^2}$ heißt
+\emph{Standardabweichung} der Stichprobe $(X_i,...,X_n)$.
+
+Der \emph{empirische Mittelwert} ist definiert durch
+
+\begin{equation}
+	\Bar{X} = \frac{1}{n} \sum_{i=1}^n X_i,
+\end{equation}
+
+die \emph{empirische Varianz} durch
+
+\begin{equation}
+S_X^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \Bar{X})^2
+\end{equation}
+
+einfacher (zu berechnen) auch:
+
+\begin{equation}
+S_X^2 = \frac{1}{n-1} ((\sum_{i=1}^n X_i^2) - n \cdot \Bar{X}^2).
+\end{equation}
 
 Herteilung einer alternativen Formel für die Varianz
 \begin{gather}
